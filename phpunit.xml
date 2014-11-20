@@ -1,0 +1,15 @@
+<phpunit backupGlobals='true'
+		 backupStaticAttributes='false'
+		 colors='true'
+		 convertErrorsToExceptions='true'
+		 convertNoticesToExceptions='true'
+		 convertWarningsToExceptions='true'
+		 processIsolation='false'
+		 syntaxCheck='false'
+		 bootstrap='config/bootstrap.php'>
+	<testsuites>
+		<testsuite name='Unit-Tests'>
+			<directory>tests</directory>
+		</testsuite>
+	</testsuites>
+</phpunit>

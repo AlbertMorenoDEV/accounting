@@ -1,0 +1,23 @@
+{
+    "name": "albertmoreno/accounting",
+    "description": "Accounting Software",
+    "require": {
+        "rhumsaa/uuid": "@stable",
+        "phpexcel/phpexcel": "@stable",
+        "symfony/console": "@stable"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "@stable"
+    },
+    "authors": [
+        {
+            "name": "Albert Moreno",
+            "email": "albertm.moreno.dev@gmail.com"
+        }
+    ],
+	"autoload": {
+		"psr-4": {
+			"accounting\\": "src/"
+		}
+	}
+}

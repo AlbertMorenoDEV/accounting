@@ -9,10 +9,10 @@ class CreateAccountTest extends PHPUnit_Framework_TestCase
 	{
 		$repo = new InMemoryAccountRepository();
 		$usecase = new CreateAccount($repo, new AccountUuid);
-		$usecase->ejecutar("Ac1");
+		$usecase->execute("Ac1");
 		$account = $repo->all()[0];
 
 		$this->assertInstanceOf('accounting\model\Account', $account);
-		$this->assertEquals("Ac1", $account->name);
+		$this->assertEquals("Ac1", $account->getName());
 	}
 }

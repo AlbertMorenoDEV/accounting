@@ -1,11 +1,10 @@
 <?php
 namespace accounting\aplication;
 
-use accounting\model\Account;
 use accounting\model\AccountId;
 use accounting\model\AccountRepository;
 
-class CreateAccount
+class ChangeAccountName
 {
 	private $repo;
 	private $idGenerator;
@@ -16,13 +15,15 @@ class CreateAccount
 		$this->idGenerator = $accountId;
 	}
 
-	public function execute($name)
+	public function execute($uuid, $newName)
 	{
-		$idGenerator = $this->idGenerator;
-		$uuid = $idGenerator::generate();
-		$account = new Account($uuid, $name);
+		if (is_string($uuid)) {
+			$idGenerator = $this->idGenerator;
+			$uuid = $idGenerator::fromString($uuid);
+		}
+		$account = $this->repo->findById($uuid);
+		$account->setName($newName);
 		$this->repo->add($account);
 		$this->repo->save();
-		return $uuid;
 	}
 }

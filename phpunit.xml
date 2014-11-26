@@ -6,7 +6,7 @@
 		 convertWarningsToExceptions='true'
 		 processIsolation='false'
 		 syntaxCheck='false'
-		 bootstrap='config/bootstrap.php'>
+		 bootstrap='vendor/autoload.php'>
 	<testsuites>
 		<testsuite name='Unit-Tests'>
 			<directory>tests</directory>

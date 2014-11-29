@@ -9,7 +9,7 @@ class MySQLAccountRepositoryTest extends PHPUnit_Framework_TestCase
 
 	public function setUp()
 	{
-		$this->conn = new MySQLi("127.0.0.1", "accounting", "accounting");
+		$this->conn = new MySQLi("127.0.0.1", "accounting", "");
 		$this->conn->select_db("accounting");
 	}
 	public function testSave()

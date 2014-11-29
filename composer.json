@@ -4,7 +4,8 @@
     "require": {
         "rhumsaa/uuid": "@stable",
         "phpexcel/phpexcel": "@stable",
-        "symfony/console": "@stable"
+        "symfony/console": "@stable",
+        "components/bootstrap": "@stable"
     },
     "require-dev": {
         "phpunit/phpunit": "@stable"

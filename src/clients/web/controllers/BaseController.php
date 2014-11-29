@@ -9,18 +9,21 @@ abstract class BaseController
 	protected $connection;
 	protected $persistenceType;
 	protected $idsType;
+	protected $title;
 
 	public function __construct($config)
 	{
 		$this->connection = $config['connection'];
 		$this->persistenceType = $config['persistenceType'];
 		$this->idsType = $config['idsType'];
+		$this->title = $config['title'];
 	}
 
 	public final function render($template, $data)
 	{
 		ob_start();
 		include dirname(__DIR__)."/templates/$template.tpl.php";
+		$title = $this->title;
 		$content = ob_get_clean();
 		include dirname(__DIR__)."/templates/base.tpl.php";
 	}

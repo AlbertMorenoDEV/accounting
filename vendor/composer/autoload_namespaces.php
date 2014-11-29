@@ -7,7 +7,10 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Symfony\\Component\\Yaml\\' => array($vendorDir . '/symfony/yaml'),
+    'Symfony\\Component\\Process\\' => array($vendorDir . '/symfony/process'),
     'Symfony\\Component\\Console\\' => array($vendorDir . '/symfony/console'),
     'PHPExcel' => array($vendorDir . '/phpexcel/phpexcel/Classes'),
     'Doctrine\\Instantiator\\' => array($vendorDir . '/doctrine/instantiator/src'),
+    'ComponentInstaller' => array($vendorDir . '/robloach/component-installer/src'),
+    'Assetic' => array($vendorDir . '/kriswallsmith/assetic/src'),
 );

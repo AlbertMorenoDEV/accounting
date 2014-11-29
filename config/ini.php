@@ -1,5 +1,5 @@
 <?php
-define(ENTORNO, 'dev');
+define(ENVIRONMENT, 'dev');
 define(CONTROLLERS_PATH, dirname(__DIR__).'/src/clients/web/controllers');
 date_default_timezone_set('Europe/Madrid');
 

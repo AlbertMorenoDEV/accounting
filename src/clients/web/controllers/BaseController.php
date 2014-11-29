@@ -17,7 +17,7 @@ abstract class BaseController
 		$this->idsType = $config['idsType'];
 	}
 
-	public final function render($template, $datos)
+	public final function render($template, $data)
 	{
 		ob_start();
 		include dirname(__DIR__)."/templates/$template.tpl.php";

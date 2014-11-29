@@ -16,7 +16,7 @@ use accounting\clients\cli\commands\ChangeAccountNameCommand;
 
 // According repositories configured persistence type
 $name = "accounting\\infrastructure\\persistence\\".$config['persistenceType']."AccountRepository";
-$accountRepository = new $name($config['conection']);
+$accountRepository = new $name($config['connection']);
 
 // Ids generator set
 $name = "accounting\\infrastructure\\ids\\Account".$config['idsType'];

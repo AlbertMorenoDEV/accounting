@@ -8,7 +8,7 @@ class ListAccountsController extends BaseController
 	public function execute($request, $response)
 	{
 
-		$usecase = new ListAccounts($this->getRepo('account'));
+		$usecase = new ListAccounts($this->getRepository('account'));
 		$result = $usecase->execute();
 
 		$this->render("list-accounts", $result);

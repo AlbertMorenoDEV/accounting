@@ -30,8 +30,7 @@ abstract class BaseController
 		if (!array_key_exists($repoName, $this->repos)) {
 			$name = "accounting\infrastructure\\persistence\\".$this->persistenceType.ucfirst($repoName)."Repository";
 			if (class_exists($name)) $this->repos[$repoName] = new $name($this->connection);
-			
-			throw new \Exception("Repository $name not exists");
+			else throw new \Exception("Repository $name not exists");
 		}
 		return $this->repos[$repoName];
 	}

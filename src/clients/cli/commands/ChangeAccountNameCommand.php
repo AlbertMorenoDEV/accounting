@@ -41,6 +41,6 @@ class ChangeAccountNameCommand extends Command
 		$uuid = $input->getArgument('uuid');
 		$newName = $input->getArgument('name');
 		$usecase = new ChangeAccountName($this->repo, $this->idsGenerator);
-		$usecase->ejecutar($uuid, $newName);
+		$usecase->execute($uuid, $newName);
 	}
 }

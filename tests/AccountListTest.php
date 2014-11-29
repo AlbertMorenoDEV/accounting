@@ -1,10 +1,10 @@
 <?php
-use accounting\aplication\AccountList;
+use accounting\aplication\ListAccounts;
 use accounting\model\Account;
 use accounting\infrastructure\persistence\InMemoryAccountRepository;
 use accounting\infrastructure\ids\AccountUuid;
 
-class AccountListTest extends PHPUnit_Framework_TestCase
+class ListAccountsTest extends PHPUnit_Framework_TestCase
 {
 	private $repo;
 
@@ -35,7 +35,7 @@ class AccountListTest extends PHPUnit_Framework_TestCase
 
 	public function testExecute()
 	{
-		$usecase = new AccountList($this->repo);
+		$usecase = new ListAccounts($this->repo);
 		$result = $usecase->execute("Bla");
 		$this->assertCount(2, $result);
 		$result = $usecase->execute("Account3", false);

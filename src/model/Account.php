@@ -5,12 +5,14 @@ class Account
 {
 	private $id;
 	private $name;
+	private $creationDate;
 
-	public function __construct(AccountId $id, $name)
+	public function __construct(AccountId $id, $name, $creationDate)
 	{
 		assert(is_string($name));
 		$this->id = $id;
 		$this->name = $name;
+		$this->creationDate = $creationDate;
 	}
 	
 	public function getId()
@@ -21,6 +23,11 @@ class Account
 	public function getName()
 	{
 		return $this->name;
+	}
+	
+	public function getCreationDate()
+	{
+		return $this->creationDate;
 	}
 	
 	public function setName($newName)

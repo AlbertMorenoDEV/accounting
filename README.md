@@ -31,6 +31,7 @@ Accounting Software
 	- [ ] List accounts history items
 	- [ ] View account history item
 	- [ ] Edit account history item
+- [ ] Log system
 - [ ] Implant Symfony router
 - [ ] Breadcrumbs system
 - [ ] Menu system

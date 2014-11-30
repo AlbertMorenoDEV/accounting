@@ -1,11 +1,11 @@
 <?php
 date_default_timezone_set('Europe/Madrid');
-use accounting\infrastructure\persistence\MySQLAccountRepository;
+use accounting\infrastructure\ids\AccountHistoryUuid;
+use accounting\infrastructure\ids\AccountUuid;
 use accounting\infrastructure\persistence\MySQLAccountHistoryRepository;
+use accounting\infrastructure\persistence\MySQLAccountRepository;
 use accounting\model\Account;
 use accounting\model\AccountHistory;
-use accounting\infrastructure\ids\AccountUuid;
-use accounting\infrastructure\ids\AccountHistoryUuid;
 use accounting\model\Money;
 
 class MySQLAccountHistoryRepositoryTest extends PHPUnit_Framework_TestCase
@@ -19,8 +19,18 @@ class MySQLAccountHistoryRepositoryTest extends PHPUnit_Framework_TestCase
 	}
 	public function testSave()
 	{
+		$accountRepository = new MySQLAccountRepository($this->conn);
+		$accountHistoryRepository = new MySQLAccountHistoryRepository($this->conn);
+		$idAccount = AccountUuid::fromNamespace("unitest_account");
+		$id = AccountHistoryUuid::fromNamespace("unitest_account_history");
+		
+		// Clean
+		$accountHistoryRepository->delete($id);
+		$this->assertEquals(null, $accountHistoryRepository->findById($id));
+		$accountRepository->delete($idAccount);
+		$this->assertEquals(null, $accountRepository->findById($idAccount));
+		
 		// Account creation
-		$idAccount = AccountUuid::fromString("0d467a5f-3969-4728-b9ae-b9d6c6c191ac");
 		$account = new Account(
 			$idAccount,
 			"Ac1",
@@ -28,12 +38,10 @@ class MySQLAccountHistoryRepositoryTest extends PHPUnit_Framework_TestCase
 			new \DateTime("2014-11-30 01:35:16"),
 			new Money(340.2345)
 		);
-		$accountRespository = new MySQLAccountRepository($this->conn);
-		$accountRespository->add($account);
-		$accountRespository->save();
+		$accountRepository->add($account);
+		$accountRepository->save();
 		
 		// Account history creation
-		$id = AccountHistoryUuid::fromString("a2ca46ea-7f5b-41b8-850b-3d9609b0d2b9");
 		$accountHistory = new AccountHistory(
 			$id,
 			$account,
@@ -41,16 +49,15 @@ class MySQLAccountHistoryRepositoryTest extends PHPUnit_Framework_TestCase
 			new \DateTime("2014-11-29 16:17:01"),
 			"PayPal"
 		);
-
-		$repo = new MySQLAccountHistoryRepository($this->conn);
-
-		$repo->add($accountHistory);
-		$repo->save();
-		$this->assertEquals($accountHistory, $repo->findById($id));
 		
-		$accountRespository->delete($idAccount);
-		$repo->delete($id);
-		$repo = new MySQLAccountHistoryRepository($this->conn);
-		$this->assertEquals(null, $repo->findById($id));
+		$accountHistoryRepository->add($accountHistory);
+		$accountHistoryRepository->save();
+		$this->assertEquals($accountHistory, $accountHistoryRepository->findById($id));
+		
+		// delete
+		$accountHistoryRepository->delete($id);
+		$this->assertEquals(null, $accountHistoryRepository->findById($id));
+		$accountRepository->delete($idAccount);
+		$this->assertEquals(null, $accountRepository->findById($idAccount));
 	}
 }

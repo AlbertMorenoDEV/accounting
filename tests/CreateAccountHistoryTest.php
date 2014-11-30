@@ -32,7 +32,7 @@ class CreateAccountHistoryTest extends PHPUnit_Framework_TestCase
 			new \DateTime($date),
 			$concept
 		);
-		$accountHistory = $repo->all()[0];
+		$accountHistory = $repo->all($account)[0];
 
 		$this->assertInstanceOf('accounting\model\AccountHistory', $accountHistory);
 		$this->assertEquals($account, $accountHistory->getAccount());

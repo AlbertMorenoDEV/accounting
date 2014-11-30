@@ -1,6 +1,7 @@
 <?php
 namespace accounting\infrastructure\persistence;
 
+use accounting\model\Account;
 use accounting\model\AccountHistory;
 use accounting\model\AccountId;
 use accounting\model\AccountHistoryId;
@@ -10,10 +11,16 @@ class InMemoryAccountHistoryRepository implements AccountHistoryRepository
 {
 	private $items = [];
 	private $temp = [];
-
-	public function all()
+	
+	public function all(Account $account)
 	{
-		return array_values($this->items);
+		$result = [];
+		foreach ($this->items as $item) {
+			if ($item->getAccount()->getId() == $account->getId()) {
+				$result[] = $item;
+			}
+		}
+		return $result;
 	}
 
 	public function findById(AccountHistoryId $id)
@@ -25,22 +32,11 @@ class InMemoryAccountHistoryRepository implements AccountHistoryRepository
 		}
 	}
 
-	public function findByConcept($concept)
+	public function findByConcept(Account $account, $concept)
 	{
 		$result = [];
 		foreach ($this->items as $item) {
-			if ($concept === "" || strpos($item->getConcept(), $concept) !== false) {
-				$result[] = $item;
-			}
-		}
-		return $result;
-	}
-	
-	public function findByAccountId(AccountId $id)
-	{
-		$result = [];
-		foreach ($this->items as $item) {
-			if ($item->getAccountId() == $id) {
+			if ($item->getAccount()->getId() == $account->getId() && ($concept === "" || strpos($item->getConcept(), $concept) !== false)) {
 				$result[] = $item;
 			}
 		}

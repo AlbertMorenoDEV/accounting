@@ -1,22 +1,25 @@
 <?php
 namespace accounting\aplication;
 
+use accounting\model\Account;
 use accounting\model\AccountHistoryId;
 use accounting\model\AccountHistoryRepository;
 
 class ListAccountHistories
 {
-	private $repo;
+	private $repository;
+	private $account;
 
-	public function __construct(AccountHistoryRepository $repo)
+	public function __construct(AccountHistoryRepository $repository, Account $account)
 	{
-		$this->repo = $repo;
+		$this->repository = $repository;
+		$this->account = $account;
 	}
 
 	public function execute($conceptFilter = "")
 	{
 		assert(is_string($conceptFilter), "Error in concept filter");
 
-		return $this->repo->findByConcept($conceptFilter);
+		return $this->repository->findByConcept($this->account, $conceptFilter);
 	}
 }

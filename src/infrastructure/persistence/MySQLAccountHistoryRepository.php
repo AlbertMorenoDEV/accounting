@@ -15,7 +15,7 @@ class MySQLAccountHistoryRepository implements AccountHistoryRepository
 	private $tabla = 'accounts_history';
 	private $temp = [];
 	private $conn;
-	
+
 	public function __construct(\MySQLi $conn)
 	{
 		$this->conn = $conn;
@@ -27,10 +27,13 @@ class MySQLAccountHistoryRepository implements AccountHistoryRepository
 		$this->temp[(string)$item->getId()] = $item;
 	}
 
-	public function all()
+	public function all(Account $account)
 	{
 		$resultado = [];
 		$qb = new QueryBuilder($this->tabla);
+		$qb->where([
+			'id_account' => $account->getId()
+		]);
 		$action = $this->conn->query((string)$qb);
 		if (!$action) throw new \RunTimeException($this->conn->error);
 		
@@ -49,24 +52,14 @@ class MySQLAccountHistoryRepository implements AccountHistoryRepository
 		if (!$action) throw new \RunTimeException($this->conn->error);
 	}
 
-	public function findByAccountId(AccountId $id)
-	{
-		$qb = new QueryBuilder($this->tabla);
-		$qb->where(['id_account' => $id]);
-		$action = $this->conn->query((string)$qb);
-		if (!$action) throw new \RunTimeException($this->conn->error);
-		
-		while ($row = $action->fetch_array(MYSQLI_ASSOC)) {
-			$resultado[] = $this->hydrate($row);
-		}
-		return $resultado;
-	}
-
-	public function findByConcept($concept)
+	public function findByConcept(Account $account, $concept)
 	{
 		$resultado = [];
 		$qb = new QueryBuilder($this->tabla);
-		$qb->where(['concept LIKE' => "%$concept%"]);
+		$qb->where([
+			'concept LIKE' => "%$concept%",
+			'id_account' => $account->getId()
+		]);
 		$action = $this->conn->query((string)$qb);
 		if (!$action) throw new \RunTimeException($this->conn->error);
 		

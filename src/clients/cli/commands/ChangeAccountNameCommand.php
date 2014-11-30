@@ -6,9 +6,9 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-use accounting\aplication\ChangeAccountName;
+use accounting\aplication\ModifyAccountName;
 
-class ChangeAccountNameCommand extends Command
+class ModifyAccountNameCommand extends Command
 {
 	private $repo;
 	private $idsGenerator;
@@ -40,7 +40,7 @@ class ChangeAccountNameCommand extends Command
 	{
 		$uuid = $input->getArgument('uuid');
 		$newName = $input->getArgument('name');
-		$usecase = new ChangeAccountName($this->repo, $this->idsGenerator);
+		$usecase = new ModifyAccountName($this->repo, $this->idsGenerator);
 		$usecase->execute($uuid, $newName);
 	}
 }

@@ -12,7 +12,7 @@ use Symfony\Component\Console\Application;
 use accounting\clients\cli\commands\ListAccountsCommand;
 use accounting\clients\cli\commands\ViewAccountCommand;
 use accounting\clients\cli\commands\CreateAccountCommand;
-use accounting\clients\cli\commands\ChangeAccountNameCommand;
+use accounting\clients\cli\commands\ModifyAccountNameCommand;
 
 // According repositories configured persistence type
 $name = "accounting\\infrastructure\\persistence\\".PERSISTENCE_TYPE."AccountRepository";
@@ -26,5 +26,5 @@ $application = new Application();
 $application->add(new ListAccountsCommand($accountRepository, $idAccountGenerator));
 $application->add(new ViewAccountCommand($accountRepository, $idAccountGenerator));
 $application->add(new CreateAccountCommand($accountRepository, $idAccountGenerator));
-$application->add(new ChangeAccountNameCommand($accountRepository, $idAccountGenerator));
+$application->add(new ModifyAccountNameCommand($accountRepository, $idAccountGenerator));
 $application->run();

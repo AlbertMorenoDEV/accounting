@@ -34,7 +34,11 @@ class AccountHistory
 	 */
 	public function setAmount($new) { $this->amount = $new; }
 	public function setDate($new) { $this->date = $new; }
-	public function setConcept($new) { $this->concept = $new; }
+	public function setConcept($new)
+	{
+		assert(is_string($newConcept) || is_null($newConcept));
+		$this->concept = $new;
+	}
 
 	public function __toString() { return (string)$this->id; }
 }

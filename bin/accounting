@@ -15,11 +15,11 @@ use accounting\clients\cli\commands\CreateAccountCommand;
 use accounting\clients\cli\commands\ChangeAccountNameCommand;
 
 // According repositories configured persistence type
-$name = "accounting\\infrastructure\\persistence\\".$config['persistenceType']."AccountRepository";
+$name = "accounting\\infrastructure\\persistence\\".PERSISTENCE_TYPE."AccountRepository";
 $accountRepository = new $name($config['connection']);
 
 // Ids generator set
-$name = "accounting\\infrastructure\\ids\\Account".$config['idsType'];
+$name = "accounting\\infrastructure\\ids\\Account".ID_TYPE;
 $idAccountGenerator = new $name;
 
 $application = new Application();

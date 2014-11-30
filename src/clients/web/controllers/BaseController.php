@@ -15,10 +15,10 @@ abstract class BaseController
 	public function __construct($config)
 	{
 		$this->connection = $config['connection'];
-		$this->persistenceType = $config['persistenceType'];
-		$this->idsType = $config['idsType'];
-		$this->title = $config['title'];
-		$this->version = $config['version'];
+		$this->persistenceType = PERSISTENCE_TYPE;
+		$this->idsType = ID_TYPE;
+		$this->title = APP_TITLE;
+		$this->version = VERSION." ".VERSION_TYPE;
 	}
 
 	public final function render($template, $data)

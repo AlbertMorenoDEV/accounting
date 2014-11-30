@@ -1,12 +1,13 @@
 <?php
+date_default_timezone_set('Europe/Madrid');
 define(ENVIRONMENT, 'dev');
 define(CONTROLLERS_PATH, dirname(__DIR__).'/src/clients/web/controllers');
-date_default_timezone_set('Europe/Madrid');
 
-$config['persistenceType'] = "MySQL";
-$config['idsType'] = "Uuid";
-$config['title'] = "Accounting";
-$config['version'] = "v.01.00.00 beta";
+define(PERSISTENCE_TYPE, "MySQL");
+define(ID_TYPE, "Uuid");
+define(APP_TITLE, "Accounting");
+define(VERSION, "1.00");
+define(VERSION_TYPE, "beta");
 
 $config['connection'] = new \MySQLi("127.0.0.1", "accounting", "");
 $config['connection']->select_db("accounting");

@@ -1,10 +1,8 @@
-ACCOUNTING
-==========
+# ACCOUNTING
 
 Accounting Software
 
-User histories
---------------
+## User histories
 * Create account
 * List accounts
 * View account
@@ -14,18 +12,15 @@ User histories
 * View account history item
 * Edit account history item
 
-Entities
---------
+## Entities
 * Account
 * AccountHistory
 
-Value Objects
--------------
+## Value Objects
 * Period
 * Money
 
-TODO
-----
+## TODO
 - [x] Account
 	- [x] Create account
 	- [x] List accounts
@@ -39,3 +34,4 @@ TODO
 - [ ] Implant Symfony router
 - [ ] Breadcrumbs system
 - [ ] Menu system
+- [ ] Auto getter

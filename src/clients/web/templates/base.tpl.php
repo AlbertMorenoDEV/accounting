@@ -16,19 +16,21 @@
 		</style>
 		
 		<!-- compiled and minified CSS -->
-		<link rel="stylesheet" href="../../vendor/components/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../../components/bootstrap/css/bootstrap.min.css">
 
 		<!-- theme -->
-		<link rel="stylesheet" href="../../vendor/components/bootstrap/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="../../components/bootstrap/css/bootstrap-theme.min.css">
 
 		<!-- compiled and minified JavaScript -->
-		<script src="../../vendor/components/bootstrap/js/bootstrap.min.js"></script>
+		<script src="../../components/bootstrap/js/bootstrap.min.js"></script>
 		
 	</head>
 	<body>
 		<div class="container">
+			<div class="page-header">
+				<h1><?=$title?> <small><?=$version;?></small></h1>
+			</div>
 			<div class="starter-template">
-				<h1><?=$title?></h1>
 				<?=$content?>
 			</div>
 		</div>

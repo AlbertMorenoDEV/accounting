@@ -6,6 +6,7 @@ date_default_timezone_set('Europe/Madrid');
 $config['persistenceType'] = "MySQL";
 $config['idsType'] = "Uuid";
 $config['title'] = "Accounting";
+$config['version'] = "v.01.00.00 beta";
 
 $config['connection'] = new \MySQLi("127.0.0.1", "accounting", "");
 $config['connection']->select_db("accounting");

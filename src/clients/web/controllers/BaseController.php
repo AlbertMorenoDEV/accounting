@@ -10,6 +10,7 @@ abstract class BaseController
 	protected $persistenceType;
 	protected $idsType;
 	protected $title;
+	protected $version;
 
 	public function __construct($config)
 	{
@@ -17,6 +18,7 @@ abstract class BaseController
 		$this->persistenceType = $config['persistenceType'];
 		$this->idsType = $config['idsType'];
 		$this->title = $config['title'];
+		$this->version = $config['version'];
 	}
 
 	public final function render($template, $data)
@@ -24,6 +26,7 @@ abstract class BaseController
 		ob_start();
 		include dirname(__DIR__)."/templates/$template.tpl.php";
 		$title = $this->title;
+		$version = $this->version;
 		$content = ob_get_clean();
 		include dirname(__DIR__)."/templates/base.tpl.php";
 	}

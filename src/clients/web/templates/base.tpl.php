@@ -25,6 +25,14 @@
 		
 	</head>
 	<body>
+		<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+			<div class="container">
+				<ul class="nav nav-pills">
+					<li role="presentation" class="active"><a href="<?=BASE_URL;?>/">Home</a></li>
+					<li role="presentation"><a href="<?=BASE_URL;?>/ListAccounts">List of Accounts</a></li>
+				</ul>
+			</div>
+		</nav>
 		<div class="container">
 			<div class="page-header">
 				<h1><?=$title?> <small><?=$version;?></small></h1>

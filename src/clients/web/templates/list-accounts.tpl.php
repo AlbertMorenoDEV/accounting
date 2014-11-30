@@ -1,3 +1,7 @@
+<ol class="breadcrumb">
+	<li><a href="<?=BASE_URL;?>/">Home</a></li>
+	<li class="active">List of Accounts</li>
+</ol>
 <div class="panel panel-default">
 	<div class="panel-heading">
 		<h2 class="panel-title">List of Accounts</h2>

@@ -7,6 +7,7 @@ require_once dirname(__DIR__).'/config/bootstrap.php';
 
 // router
 $controler = substr($_SERVER['PATH_INFO'], 1, strlen($_SERVER['PATH_INFO'])).'Controller';
+if ($controler=="Controller") $controler = DEFAULT_CONTROLLER.'Controller';
 
 if (is_readable(CONTROLLERS_PATH."/{$controler}.php")) {
 	try {

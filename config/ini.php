@@ -8,6 +8,8 @@ define(ID_TYPE, "Uuid");
 define(APP_TITLE, "Accounting");
 define(VERSION, "1.00");
 define(VERSION_TYPE, "beta");
+define(BASE_URL, $_SERVER["SCRIPT_NAME"]);
+define(DEFAULT_CONTROLLER, "Index");
 
 $config['connection'] = new \MySQLi("127.0.0.1", "accounting", "");
 $config['connection']->select_db("accounting");

@@ -12,7 +12,7 @@ class MySQLDataMapperAccountHistory
 	{
 		return new AccountHistory(
 			AccountUuid::fromString($row['id']),
-			AccountHistoryUuid::fromString($row['id_account']),
+			$row['account'],
 			new Money($row['amount']),
 			new \DateTime($row['date']),
 			(string) $row['account']

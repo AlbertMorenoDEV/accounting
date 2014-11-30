@@ -27,7 +27,7 @@ class MySQLAccountHistoryRepository implements AccountHistoryRepository
 			throw new \RunTimeException($this->conn->error);
 		} 
 		while ($row = $action->fetch_array(MYSQLI_ASSOC)) {
-			$resultado[] = $this->mapper->HydrateFromRow($row);
+			$resultado[] = $this->hydrate($row);
 		}
 		return $resultado;
 	}
@@ -41,7 +41,7 @@ class MySQLAccountHistoryRepository implements AccountHistoryRepository
 			throw new \RunTimeException($this->conn->error);
 		} 
 		if ($resultado = $action->fetch_array(MYSQLI_ASSOC)) {
-			return $this->mapper->HydrateFromRow($resultado);
+			return $this->hydrate($resultado);
 		}	
 		return null;
 	}
@@ -56,7 +56,7 @@ class MySQLAccountHistoryRepository implements AccountHistoryRepository
 			throw new \RunTimeException($this->conn->error);
 		} 
 		while ($row = $action->fetch_array(MYSQLI_ASSOC)) {
-			$resultado[] = $this->mapper->HydrateFromRow($row);
+			$resultado[] = $this->hydrate($row);
 		}
 		return $resultado;
 	}
@@ -70,7 +70,7 @@ class MySQLAccountHistoryRepository implements AccountHistoryRepository
 			throw new \RunTimeException($this->conn->error);
 		} 
 		while ($row = $action->fetch_array(MYSQLI_ASSOC)) {
-			$resultado[] = $this->mapper->HydrateFromRow($row);
+			$resultado[] = $this->hydrate($row);
 		}
 		return $resultado;
 	}
@@ -111,5 +111,13 @@ class MySQLAccountHistoryRepository implements AccountHistoryRepository
 		if (!$action) {
 			throw new \RunTimeException($this->conn->error);
 		}
+	}
+	
+	private function hydrate($row)
+	{
+		$accountRespository = new MySQLAccountRepository($this->conn);
+		$row["account"] = $repo->findById($row["id_account"]);
+		unset($row["id_account"]);
+		return $this->mapper->HydrateFromRow($row);
 	}
 }

@@ -1,6 +1,7 @@
 <ol class="breadcrumb">
 	<li><a href="<?=BASE_URL;?>/">Home</a></li>
-	<li class="active">List of Accounts</li>
+	<li><a href="<?=BASE_URL;?>/ListAccounts">List of Accounts</a></li>
+	<li class="active">List of Account histories</li>
 </ol>
 <div class="panel panel-default">
 	<div class="panel-heading">

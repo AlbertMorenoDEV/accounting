@@ -9,7 +9,7 @@ class Account
 	private $modificationDate;
 	private $total;
 
-	public function __construct(AccountId $id, $name, $creationDate, $modificationDate, Money $total)
+	public function __construct(AccountId $id, $name, \DateTime $creationDate, \DateTime $modificationDate, Money $total)
 	{
 		assert(is_string($name));
 		$this->id = $id;

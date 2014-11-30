@@ -16,16 +16,18 @@ class AccountTest extends PHPUnit_Framework_TestCase
 		$account = new Account(
 			AccountUuid::fromString($uuid),
 			$name,
-			$creationDate,
-			$modificationDate,
+			new \DateTime($creationDate),
+			new \DateTime($modificationDate),
 			new Money($total)
 		);
 
 		$this->assertEquals(AccountUuid::fromString($uuid), $account->getId());
 		$this->assertEquals($uuid, (string)$account->getId());
 		$this->assertEquals($name, $account->getName());
-		$this->assertEquals($creationDate, $account->getCreationDate());
-		$this->assertEquals($modificationDate, $account->getModificationDate());
+		$this->assertEquals(new \DateTime($creationDate), $account->getCreationDate());
+		$this->assertEquals($creationDate, $account->getCreationDate()->format('Y-m-d H:i:s'));
+		$this->assertEquals(new \DateTime($modificationDate), $account->getModificationDate());
+		$this->assertEquals($modificationDate, $account->getModificationDate()->format('Y-m-d H:i:s'));
 		$this->assertEquals(new Money($total), $account->getTotal());
 		$this->assertEquals($total, $account->getTotal()->getAmount());
 	}

@@ -2,6 +2,7 @@
 namespace accounting\infrastructure\persistence;
 
 use accounting\model\AccountHistory;
+use accounting\model\AccountId;
 use accounting\model\AccountHistoryId;
 use accounting\model\AccountHistoryRepository;
 
@@ -35,16 +36,16 @@ class InMemoryAccountHistoryRepository implements AccountHistoryRepository
 		return $result;
 	}
 	
-	// public function findByAccountId(AccountId $id)
-	// {
-	// 	$result = [];
-	// 	foreach ($this->items as $item) {
-	// 		if ($item->getAccountId() == $id) {
-	// 			$result[] = $item;
-	// 		}
-	// 	}
-	// 	return $result;
-	// }
+	public function findByAccountId(AccountId $id)
+	{
+		$result = [];
+		foreach ($this->items as $item) {
+			if ($item->getAccountId() == $id) {
+				$result[] = $item;
+			}
+		}
+		return $result;
+	}
 
 	public function add(AccountHistory $account)
 	{

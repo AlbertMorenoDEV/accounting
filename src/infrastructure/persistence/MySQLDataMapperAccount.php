@@ -9,6 +9,6 @@ class MySQLDataMapperAccount
 {
 	public function HydrateFromRow(array $row)
 	{
-		return new Account( AccountUuid::fromString($row['id']), (string) $row['name'], (string) $row['creation_date'], (string) $row['modification_date'], new Money($row['total']) );
+		return new Account( AccountUuid::fromString($row['id']), (string) $row['name'], new \DateTime($row['creation_date']), new \DateTime($row['modification_date']), new Money($row['total']) );
 	}
 }

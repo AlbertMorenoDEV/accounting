@@ -1,6 +1,7 @@
 <?php
 namespace accounting\aplication;
 
+use accounting\model\Account;
 use accounting\model\AccountHistory;
 use accounting\model\AccountHistoryId;
 use accounting\model\AccountHistoryRepository;

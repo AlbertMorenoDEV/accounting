@@ -19,8 +19,8 @@ class AccountHistoryTest extends PHPUnit_Framework_TestCase
 		$account = new Account(
 			AccountUuid::fromString("0d467a5f-3969-4728-b9ae-b9d6c6c191ac"),
 			"Ac1",
-			"2014-11-29 16:14:01",
-			"2014-11-30 01:35:16",
+			new \DateTime("2014-11-29 16:14:01"),
+			new \DateTime("2014-11-30 01:35:16"),
 			new Money(340.2345)
 		);
 		
@@ -28,7 +28,7 @@ class AccountHistoryTest extends PHPUnit_Framework_TestCase
 			AccountHistoryUuid::fromString($uuid),
 			$account,
 			new Money($amount),
-			new DateTime($date),
+			new \DateTime($date),
 			$concept
 		);
 
@@ -37,7 +37,7 @@ class AccountHistoryTest extends PHPUnit_Framework_TestCase
 		$this->assertEquals($account, $accountHistory->getAccount());
 		$this->assertEquals(new Money($amount), $accountHistory->getAmount());
 		$this->assertEquals($amount, $accountHistory->getAmount()->getAmount());
-		$this->assertEquals(new DateTime($date), $accountHistory->getDate());
+		$this->assertEquals(new \DateTime($date), $accountHistory->getDate());
 		$this->assertEquals($date, $accountHistory->getDate()->format('Y-m-d H:i:s'));
 		$this->assertEquals($concept, $accountHistory->getConcept());
 	}

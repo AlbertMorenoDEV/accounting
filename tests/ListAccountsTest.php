@@ -12,15 +12,37 @@ class ListAccountsTest extends PHPUnit_Framework_TestCase
 	public function setUp()
 	{
 		$this->repo = new InMemoryAccountRepository();
+		
 		$id = AccountUuid::fromString("0d467a5f-3969-4728-b9ae-b9d6c6c191ac");
-		$account1 = new Account($id, "Account1 Test Bla", date("Y-m-d h:i:s"), date("Y-m-d h:i:s"), new Money(0));
+		$account1 = new Account(
+			$id,
+			"Account1 Test Bla",
+			new \DateTime,
+			new \DateTime,
+			new Money(0)
+		);
 		$this->repo->add($account1);
+		
 		$id = AccountUuid::fromString("8716297f-16c3-4b68-9357-2eaeaa224531");
-		$account2 = new Account($id, "Account2 Test", date("Y-m-d h:i:s"), date("Y-m-d h:i:s"), new Money(10));
+		$account2 = new Account(
+			$id,
+			"Account2 Test",
+			new \DateTime,
+			new \DateTime,
+			new Money(10)
+		);
 		$this->repo->add($account2);
+		
 		$id = AccountUuid::fromString("a29d0e54-1b87-435b-91e7-61dce038374a");
-		$account3 = new Account($id, "Account3 Test Bla", date("Y-m-d h:i:s"), date("Y-m-d h:i:s"), new Money(123.3456));
+		$account3 = new Account(
+			$id,
+			"Account3 Test Bla",
+			new \DateTime,
+			new \DateTime,
+			new Money(123.3456)
+		);
 		$this->repo->add($account3);
+		
 		$this->repo->save();
 	}
 

@@ -74,8 +74,8 @@ class MySQLAccountRepository implements AccountRepository
 			$valores[] = [
 				$item->getId(),
 				$item->getName(),
-				$item->getCreationDate(),
-				$item->getModificationDate(),
+				$item->getCreationDate()->format('Y-m-d H:i:s'),
+				$item->getModificationDate()->format('Y-m-d H:i:s'),
 				$item->getTotal()->getAmount()
 			];
 		}

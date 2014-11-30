@@ -21,7 +21,7 @@ class CreateAccount
 	{
 		$idGenerator = $this->idGenerator;
 		$uuid = $idGenerator::generate();
-		$account = new Account($uuid, $name, date("Y-m-d h:i:s"), date("Y-m-d h:i:s"), new Money($total));
+		$account = new Account($uuid, $name, new \DateTime, new \DateTime, new Money($total));
 		$this->repo->add($account);
 		$this->repo->save();
 		return $uuid;

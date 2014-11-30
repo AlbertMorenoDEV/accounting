@@ -68,12 +68,15 @@ class MySQLAccountRepository implements AccountRepository
 	public function save()
 	{
 		$qb = new QueryBuilder($this->tabla, 'REPLACE');
-		$campos = ['id', 'name'];
+		$campos = ['id', 'name', 'creation_date', 'modification_date', 'total'];
 		$valores = [];
 		foreach ($this->temp as $item) {
 			$valores[] = [
 				$item->getId(),
-				$item->getName()
+				$item->getName(),
+				$item->getCreationDate(),
+				$item->getModificationDate(),
+				$item->getTotal()->getAmount()
 			];
 		}
 		$qb->valores_multiples($campos, $valores);

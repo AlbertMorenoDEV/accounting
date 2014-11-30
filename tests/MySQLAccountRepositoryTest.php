@@ -1,7 +1,9 @@
 <?php
+date_default_timezone_set('Europe/Madrid');
 use accounting\infrastructure\persistence\MySQLAccountRepository;
 use accounting\model\Account;
 use accounting\infrastructure\ids\AccountUuid;
+use accounting\model\Money;
 
 class MySQLAccountRepositoryTest extends PHPUnit_Framework_TestCase
 {
@@ -15,7 +17,7 @@ class MySQLAccountRepositoryTest extends PHPUnit_Framework_TestCase
 	public function testSave()
 	{
 		$id = AccountUuid::fromNamespace("unitest");
-		$account = new Account($id, "Account Tèst");
+		$account = new Account($id, "Account TÃ¨st", "2014-11-29 16:14:01", "2014-11-30 01:35:16", new Money(340.2345));
 
 		$repo = new MySQLAccountRepository($this->conn);
 		$repo->delete($id);

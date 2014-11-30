@@ -23,6 +23,7 @@ class ChangeAccountName
 		}
 		$account = $this->repo->findById($uuid);
 		$account->setName($newName);
+		$account->setModificationDate(date("Y-m-d h:i:s"));
 		$this->repo->add($account);
 		$this->repo->save();
 	}

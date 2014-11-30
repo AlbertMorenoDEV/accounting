@@ -28,14 +28,20 @@ class CreateAccountCommand extends Command
 				'name',
 				InputArgument::REQUIRED,
 				'Name the new account'
+			)
+			->addArgument(
+				'total',
+				InputArgument::REQUIRED,
+				'Total amount of the new account'
 			);
 	}
 
 	protected function execute(InputInterface $input, OutputInterface $output)
 	{
 		$name = $input->getArgument('name');
+		$total = $input->getArgument('total');
 		$usecase = new CreateAccount($this->repo, $this->idsGenerator);
-		$result = $usecase->execute($name);
+		$result = $usecase->execute($name, $total);
 
 		$output->writeln("Account created with uuid ".(string)$result);
 	}

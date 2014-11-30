@@ -5,15 +5,13 @@
 	<div class="panel-body">
 		<table class="table">
 			<tr>
-				<th>id</th>
 				<th>Name</th>
-				<th>Creation date</th>
+				<th>Balance</th>
 			</tr>
 			<?php foreach ($data as $account) { ?>
 				<tr>
-					<td><a href="ViewAccount?id=<?= $account->getId() ?>"><?= $account->getId() ?></a></td>
-					<td><?= $account->getName() ?></td>
-					<td><?= $account->getCreationDate() ?></td>
+					<td><a href="ViewAccount?id=<?= $account->getId() ?>"><?= $account->getName() ?></a></td>
+					<td><?= $account->getTotal() ?></td>
 				</tr>
 			<?php } ?>
 		</table>

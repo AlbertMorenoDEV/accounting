@@ -26,7 +26,16 @@ Value Objects
 
 TODO
 ----
-* Implant Symfony router
-* Account history
-* Breadcrumbs system
-* Menu system
+- [x] Account
+	- [x] Create account
+	- [x] List accounts
+	- [x] View account
+	- [x] Edit account
+- [ ] Account history
+	- [ ] Create account history item
+	- [ ] List accounts history items
+	- [ ] View account history item
+	- [ ] Edit account history item
+- [ ] Implant Symfony router
+- [ ] Breadcrumbs system
+- [ ] Menu system

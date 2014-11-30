@@ -35,7 +35,7 @@
 		</nav>
 		<div class="container">
 			<div class="page-header">
-				<h1><?=$title?> <small><?=$version;?></small></h1>
+				<h1><?=$title?> <small>ver. <?=$version;?></small></h1>
 			</div>
 			<div class="starter-template">
 				<?=$content?>

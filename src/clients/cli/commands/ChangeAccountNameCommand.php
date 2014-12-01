@@ -8,7 +8,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 use accounting\aplication\ModifyAccountName;
 
-class ModifyAccountNameCommand extends Command
+class ChangeAccountNameCommand extends Command
 {
 	private $repo;
 	private $idsGenerator;

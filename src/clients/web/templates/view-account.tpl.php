@@ -1,7 +1,7 @@
 <ol class="breadcrumb">
 	<li><a href="<?=BASE_URL;?>/">Home</a></li>
 	<li><a href="<?=BASE_URL;?>/ListAccounts">List of Accounts</a></li>
-	<li class="active">Accounts</li>
+	<li class="active">Account</li>
 </ol>
 <div class="panel panel-default">
 	<div class="panel-heading">
@@ -19,11 +19,11 @@
 			</li>
 			<li class="list-group-item">
 				<h3 class="list-group-item-heading">Creation date:</h3>
-				<p class="list-group-item-text"><?= $data->getCreationDate() ?></p>
+				<p class="list-group-item-text"><?= $data->getCreationDate()->format('Y-m-d H:i:s') ?></p>
 			</li>
 			<li class="list-group-item">
 				<h3 class="list-group-item-heading">Modification date:</h3>
-				<p class="list-group-item-text"><?= $data->getModificationDate() ?></p>
+				<p class="list-group-item-text"><?= $data->getModificationDate()->format('Y-m-d H:i:s') ?></p>
 			</li>
 			<li class="list-group-item">
 				<h3 class="list-group-item-heading">Balance:</h3>

@@ -16,8 +16,10 @@ class ListAccountHistories
 		$this->account = $account;
 	}
 
-	public function execute($conceptFilter = "")
+	public function execute($conceptFilter = NULL)
 	{
+		if (is_null($conceptFilter)) return $this->repository->all($this->account);
+		
 		assert(is_string($conceptFilter), "Error in concept filter");
 
 		return $this->repository->findByConcept($this->account, $conceptFilter);

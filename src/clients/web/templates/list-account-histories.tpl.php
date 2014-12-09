@@ -13,18 +13,18 @@
 				<th>Date</th>
 				<th>Concept</th>
 				<th>Amount</th>
-				<th> </th>
+				<!-- <th> </th> -->
 			</tr>
 			<?php foreach ($data as $accountHistory) { ?>
 				<tr>
 					<td><?= $accountHistory->getDate()->format('Y-m-d H:i:s') ?></td>
 					<td><a href="ViewAccountHistory?id=<?= $accountHistory->getId() ?>"><?= $accountHistory->getConcept() ?></a></td>
 					<td><?= $accountHistory->getAmount() ?></td>
-					<td>
+					<!-- <td>
 						<a href="ConfigureAccountHistory?id=<?= $accountHistory->getId() ?>">
 							<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
 						</a>
-					</td>
+					</td> -->
 				</tr>
 			<?php } ?>
 		</table>

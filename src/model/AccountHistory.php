@@ -28,6 +28,7 @@ class AccountHistory
 	public function getAmount() { return $this->amount; }
 	public function getDate() { return $this->date; }
 	public function getConcept() { return $this->concept; }
+	public function __toString() { return (string)$this->id; }
 	
 	/**
 	 * Setters
@@ -39,6 +40,4 @@ class AccountHistory
 		assert(is_string($newConcept) || is_null($newConcept));
 		$this->concept = $new;
 	}
-
-	public function __toString() { return (string)$this->id; }
 }

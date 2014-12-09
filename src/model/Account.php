@@ -9,7 +9,7 @@ class Account
 	private $modificationDate;
 	private $total;
 
-	public function __construct(AccountId $id, $name, $creationDate, $modificationDate, Money $total)
+	public function __construct(AccountId $id, $name, \DateTime $creationDate, \DateTime $modificationDate, Money $total)
 	{
 		assert(is_string($name));
 		$this->id = $id;
@@ -27,6 +27,7 @@ class Account
 	public function getCreationDate() { return $this->creationDate; }
 	public function getModificationDate() { return $this->modificationDate; }
 	public function getTotal() { return $this->total; }
+	public function __toString() { return (string)$this->id; }
 	
 	/**
 	 * Setters
@@ -34,6 +35,4 @@ class Account
 	public function setName($newName) { $this->name = (string) $newName; }
 	public function setModificationDate($newModificationDate) { $this->modificationDate = $newModificationDate; }
 	public function setTotal($newTotal) { $this->total = $newTotal; }
-
-	public function __toString() { return (string)$this->id; }
 }

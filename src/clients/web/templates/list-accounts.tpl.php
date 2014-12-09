@@ -11,11 +11,23 @@
 			<tr>
 				<th>Name</th>
 				<th>Balance</th>
+				<th> </th>
+				<!-- <th> </th> -->
 			</tr>
 			<?php foreach ($data as $account) { ?>
 				<tr>
 					<td><a href="ViewAccount?id=<?= $account->getId() ?>"><?= $account->getName() ?></a></td>
 					<td><?= $account->getTotal() ?></td>
+					<td>
+						<a href="ListAccountHistories?id_account=<?= $account->getId() ?>">
+							<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+						</a>
+					</td>
+					<!-- <td>
+						<a href="ConfigureAccount?id=<?= $account->getId() ?>">
+							<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+						</a>
+					</td> -->
 				</tr>
 			<?php } ?>
 		</table>

@@ -4,7 +4,7 @@ namespace accounting\aplication;
 use accounting\model\AccountId;
 use accounting\model\AccountRepository;
 
-class ChangeAccountName
+class ModifyAccountName
 {
 	private $repo;
 	private $idGenerator;
@@ -23,7 +23,7 @@ class ChangeAccountName
 		}
 		$account = $this->repo->findById($uuid);
 		$account->setName($newName);
-		$account->setModificationDate(date("Y-m-d h:i:s"));
+		$account->setModificationDate(new \DateTime);
 		$this->repo->add($account);
 		$this->repo->save();
 	}

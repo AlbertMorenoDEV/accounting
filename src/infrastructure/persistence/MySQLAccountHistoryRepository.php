@@ -2,41 +2,48 @@
 namespace accounting\infrastructure\persistence;
 
 use accounting\model\Account;
+use accounting\model\AccountHistory;
+use accounting\model\AccountHistoryId;
+use accounting\model\AccountHistoryRepository;
 use accounting\model\AccountId;
 use accounting\model\AccountRepository;
+use accounting\infrastructure\ids\AccountUuid;
 
-class MySQLAccountRepository implements AccountRepository
+class MySQLAccountHistoryRepository implements AccountHistoryRepository
 {
 
-	private $tabla = 'accounts';
+	private $tabla = 'accounts_history';
 	private $temp = [];
 	private $conn;
 
 	public function __construct(\MySQLi $conn)
 	{
 		$this->conn = $conn;
-		$this->mapper = new MySQLDataMapperAccount();
+		$this->mapper = new MySQLDataMapperAccountHistory();
 	}
 
-	public function add(Account $item)
+	public function add(AccountHistory $item)
 	{
 		$this->temp[(string)$item->getId()] = $item;
 	}
 
-	public function all()
+	public function all(Account $account)
 	{
 		$resultado = [];
 		$qb = new QueryBuilder($this->tabla);
+		$qb->where([
+			'id_account' => $account->getId()
+		]);
 		$action = $this->conn->query((string)$qb);
 		if (!$action) throw new \RunTimeException($this->conn->error);
 		
 		while ($row = $action->fetch_array(MYSQLI_ASSOC)) {
-			$resultado[] = $this->mapper->HydrateFromRow($row);
+			$resultado[] = $this->hydrate($row);
 		}
 		return $resultado;
 	}
 
-	public function delete(AccountId $id)
+	public function delete(AccountHistoryId $id)
 	{
 		unset($this->temp[(string)$id]);
 		$qb = new QueryBuilder($this->tabla, 'DELETE');
@@ -45,7 +52,24 @@ class MySQLAccountRepository implements AccountRepository
 		if (!$action) throw new \RunTimeException($this->conn->error);
 	}
 
-	public function findById(AccountId $id)
+	public function findByConcept(Account $account, $concept)
+	{
+		$resultado = [];
+		$qb = new QueryBuilder($this->tabla);
+		$qb->where([
+			'concept LIKE' => "%$concept%",
+			'id_account' => $account->getId()
+		]);
+		$action = $this->conn->query((string)$qb);
+		if (!$action) throw new \RunTimeException($this->conn->error);
+		
+		while ($row = $action->fetch_array(MYSQLI_ASSOC)) {
+			$resultado[] = $this->hydrate($row);
+		}
+		return $resultado;
+	}
+
+	public function findById(AccountHistoryId $id)
 	{
 		$qb = new QueryBuilder($this->tabla);
 		$qb->where(['id' => $id])->limit(1);
@@ -53,44 +77,36 @@ class MySQLAccountRepository implements AccountRepository
 		if (!$action) throw new \RunTimeException($this->conn->error);
 		
 		if ($resultado = $action->fetch_array(MYSQLI_ASSOC)) {
-			return $this->mapper->HydrateFromRow($resultado);
+			return $this->hydrate($resultado);
 		}	
 		return null;
-	}
-
-	public function findByName($name)
-	{
-		$resultado = [];
-		$qb = new QueryBuilder($this->tabla);
-		$qb->where(['name LIKE' => "%$name%"]);
-		$action = $this->conn->query((string)$qb);
-		if (!$action) throw new \RunTimeException($this->conn->error);
-		
-		while ($row = $action->fetch_array(MYSQLI_ASSOC)) {
-			$resultado[] = $this->mapper->HydrateFromRow($row);
-		}
-		return $resultado;
 	}
 
 	public function save()
 	{
 		$qb = new QueryBuilder($this->tabla, 'REPLACE');
-		$campos = ['id', 'name', 'creation_date', 'modification_date', 'total'];
+		$campos = ['id', 'id_account', 'amount', 'date', 'concept'];
 		$valores = [];
 		foreach ($this->temp as $item) {
 			$valores[] = [
 				$item->getId(),
-				$item->getName(),
-				$item->getCreationDate()->format('Y-m-d H:i:s'),
-				$item->getModificationDate()->format('Y-m-d H:i:s'),
-				$item->getTotal()->getAmount()
+				$item->getAccount()->getId(),
+				$item->getAmount()->getAmount(),
+				$item->getDate()->format('Y-m-d H:i:s'),
+				$item->getConcept()
 			];
 		}
 		$qb->valores_multiples($campos, $valores);
 		$action = $this->conn->query((string)$qb);
 		if (!$action) throw new \RunTimeException($this->conn->error);
-		
 		$this->temp = [];
+	}
+
+	private function hydrate($row)
+	{
+		$accountRespository = new MySQLAccountRepository($this->conn);
+		$row["account"] = $accountRespository->findById(AccountUuid::fromString($row["id_account"]));
+		return $this->mapper->HydrateFromRow($row);
 	}
 
 }

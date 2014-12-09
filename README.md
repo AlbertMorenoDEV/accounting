@@ -40,3 +40,5 @@ Accounting Software
 - [ ] Breadcrumbs system
 - [ ] Menu system
 - [ ] Auto getter
+- [ ] Code refactor
+	- [ ] Comment all classes and methods

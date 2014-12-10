@@ -22,7 +22,7 @@ class ModifyAccountNameCommand extends Command
 
 	protected function configure()
 	{
-		$this->setName('account:change-name')
+		$this->setName('account:modify-name')
 			->setDescription('Rename a Account')
 			->addArgument(
 				'uuid',
@@ -32,7 +32,7 @@ class ModifyAccountNameCommand extends Command
 			->addArgument(
 				'name',
 				InputArgument::REQUIRED,
-				'New name of the category'
+				'New name of the account'
 			);
 	}
 

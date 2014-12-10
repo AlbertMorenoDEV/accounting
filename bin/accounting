@@ -10,6 +10,7 @@ require_once dirname(__DIR__).'/config/bootstrap.php';
 use Symfony\Component\Console\Application;
 
 use accounting\clients\cli\commands\ModifyAccountNameCommand;
+use accounting\clients\cli\commands\ModifyAccountHistoryAmountCommand;
 use accounting\clients\cli\commands\CreateAccountCommand;
 use accounting\clients\cli\commands\CreateAccountHistoryCommand;
 use accounting\clients\cli\commands\ListAccountsCommand;
@@ -30,6 +31,7 @@ $idAccountHistoryGenerator = new $name;
 
 $application = new Application();
 $application->add(new ModifyAccountNameCommand($accountRepository, $idAccountGenerator));
+$application->add(new ModifyAccountHistoryAmountCommand($accountHistoryRepository, $idAccountHistoryGenerator));
 $application->add(new CreateAccountCommand($accountRepository, $idAccountGenerator));
 $application->add(new CreateAccountHistoryCommand($accountHistoryRepository, $idAccountHistoryGenerator, $accountRepository));
 $application->add(new ListAccountsCommand($accountRepository, $idAccountGenerator));

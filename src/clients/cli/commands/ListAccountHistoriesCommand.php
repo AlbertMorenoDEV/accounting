@@ -45,7 +45,7 @@ class ListAccountHistoriesCommand extends Command
 		$usecase = new ListAccountHistories($this->respostory, $account);
 		$result = $usecase->execute($conceptFilter);
 		foreach ($result as $accountHistory) {
-			$output->writeln($accountHistory->getDate()->format('Y-m-d H:i:s')." - ".$accountHistory->getId()." - ".$accountHistory->getConcept());
+			$output->writeln($accountHistory->getDate()->format('Y-m-d H:i:s')." - ".$accountHistory->getId()." - ".$accountHistory->getConcept()." - ".$accountHistory->getAmount());
 		}
 	}
 }

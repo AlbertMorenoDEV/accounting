@@ -6,10 +6,9 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-use accounting\aplication\ModifyAccountHistoryAmount;
-use accounting\model\Money;
+use accounting\aplication\ModifyAccountHistoryConcept;
 
-class ModifyAccountHistoryAmountCommand extends Command
+class ModifyAccountHistoryConceptCommand extends Command
 {
 	private $repo;
 	private $idsGenerator;
@@ -23,25 +22,25 @@ class ModifyAccountHistoryAmountCommand extends Command
 
 	protected function configure()
 	{
-		$this->setName('account-history:modify-amount')
-			->setDescription('Edit amount')
+		$this->setName('account-history:modify-concept')
+			->setDescription('Edit concept')
 			->addArgument(
 				'uuid',
 				InputArgument::REQUIRED,
 				'Account Uuid'
 			)
 			->addArgument(
-				'amount',
+				'concept',
 				InputArgument::REQUIRED,
-				'New amount of the account history'
+				'New concept of the account history'
 			);
 	}
 
 	protected function execute(InputInterface $input, OutputInterface $output)
 	{
 		$uuid = $input->getArgument('uuid');
-		$newAmount = $input->getArgument('amount');
-		$usecase = new ModifyAccountHistoryAmount($this->repo, $this->idsGenerator);
-		$usecase->execute($uuid, new Money($newAmount));
+		$newConcept = $input->getArgument('concept');
+		$usecase = new ModifyAccountHistoryConcept($this->repo, $this->idsGenerator);
+		$usecase->execute($uuid, $newConcept);
 	}
 }

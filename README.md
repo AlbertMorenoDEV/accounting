@@ -34,8 +34,8 @@ Accounting Software
 	- [x] List accounts history items
 	- [x] View account history item
 	- [x] Edit account history amount via console
-	- [ ] Edit account history concept via console
-	- [ ] Edit account history date via console
+	- [x] Edit account history concept via console
+	- [x] Edit account history date via console
 	- [ ] Edit account history item via web
 - [ ] Log system
 - [ ] Implant Symfony router

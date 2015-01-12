@@ -1,7 +1,7 @@
 <ol class="breadcrumb">
 	<li><a href="<?=BASE_URL;?>/">Home</a></li>
 	<li><a href="<?=BASE_URL;?>/ListAccounts">List of Accounts</a></li>
-	<li class="active">Account Form</li>
+	<li class="active">New Account Form</li>
 </ol>
 <div class="panel panel-default">
 	<div class="panel-heading">

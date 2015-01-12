@@ -1,15 +1,16 @@
 <?php
 namespace accounting\clients\web\controllers;
 
-use accounting\aplication\ViewAccount;
+use accounting\aplication\CreateAccount;
 
 class CreateAccountController extends BaseController
 {
 	public function execute($request, $response)
 	{
-		$usecase = new ViewAccount($this->getRepository('account'), $this->getIdsGenerator('account'));
-		$result = $usecase->execute($request['id']);
-
-		$this->render("view-account", $result);
+		$usecase = new CreateAccount($this->getRepository('account'), $this->getIdsGenerator('account'));
+		$usecase->execute($request["name"], $request["total"]);
+		$result = $this->getRepository('account')->all()[0];
+		
+		$this->render("create-account", $result);
 	}
 }

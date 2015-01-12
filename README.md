@@ -23,7 +23,7 @@ Accounting Software
 ## TODO
 - [x] Account
 	- [x] Create account via console
-	- [ ] Create account via web
+	- [x] Create account via web
 	- [x] List accounts
 	- [x] View account
 	- [x] Edit account via console

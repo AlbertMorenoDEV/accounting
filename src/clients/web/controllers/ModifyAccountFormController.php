@@ -1,7 +1,7 @@
 <?php
 namespace accounting\clients\web\controllers;
 
-use accounting\aplication\CreateAccount;
+use accounting\aplication\ViewAccount;
 
 class ModifyAccountFormController extends BaseController
 {

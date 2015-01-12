@@ -12,7 +12,7 @@
 				<th>Name</th>
 				<th>Balance</th>
 				<th> </th>
-				<!-- <th> </th> -->
+				<th> </th>
 			</tr>
 			<?php foreach ($data as $account) { ?>
 				<tr>
@@ -23,11 +23,11 @@
 							<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
 						</a>
 					</td>
-					<!-- <td>
-						<a href="ConfigureAccount?id=<?= $account->getId() ?>">
+					<td>
+						<a href="ModifyAccountForm?id=<?= $account->getId() ?>">
 							<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
 						</a>
-					</td> -->
+					</td>
 				</tr>
 			<?php } ?>
 		</table>

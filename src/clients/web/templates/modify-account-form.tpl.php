@@ -21,7 +21,7 @@
 				</li>
 			</ul>
 			
-			<input type="hidden" name="uuid" value="<?= $data->getId() ?>"/>
+			<input type="hidden" name="id" value="<?= $data->getId() ?>"/>
 		</form>
 	</div>
 	<div class="panel-footer"><a href="javascript:history.back()">Back</a></div>

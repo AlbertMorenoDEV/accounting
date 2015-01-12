@@ -27,7 +27,7 @@ Accounting Software
 	- [x] List accounts
 	- [x] View account
 	- [x] Edit account via console
-	- [ ] Edit account via web
+	- [x] Edit account via web
 - [ ] Account history
 	- [x] Create account history item via console
 	- [ ] Create account history item via web

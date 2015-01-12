@@ -30,7 +30,7 @@
 				<ul class="nav nav-pills">
 					<li role="presentation" class="active"><a href="<?=BASE_URL;?>/">Home</a></li>
 					<li role="presentation"><a href="<?=BASE_URL;?>/ListAccounts">List of Accounts</a></li>
-					<li role="presentation"><a href="<?=BASE_URL;?>/CreateAccount">Create Account</a></li>
+					<li role="presentation"><a href="<?=BASE_URL;?>/AccountForm">New Account</a></li>
 				</ul>
 			</div>
 		</nav>

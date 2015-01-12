@@ -3,10 +3,10 @@ namespace accounting\clients\web\controllers;
 
 use accounting\aplication\CreateAccount;
 
-class AccountFormController extends BaseController
+class NewAccountFormController extends BaseController
 {
 	public function execute($request, $response)
 	{
-		$this->render("account-form", false);
+		$this->render("new-account-form", false);
 	}
 }

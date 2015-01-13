@@ -9,26 +9,34 @@
 		<h2 class="panel-title">Account history</h2>
 	</div>
 	<div class="panel-body">
-		<ul class="list-group">
-			<li class="list-group-item">
-				<h3 class="list-group-item-heading">Account:</h3>
-				<p class="list-group-item-text">
-					<a href="ViewAccount?id=<?= $data->getAccount()->getId() ?>"><?= $data->getAccount()->getName() ?></a>
-				</p>
-			</li>
-			<li class="list-group-item">
-				<h3 class="list-group-item-heading">Concept:</h3>
-				<p class="list-group-item-text"><?= $data->getConcept() ?></p>
-			</li>
-			<li class="list-group-item">
-				<h3 class="list-group-item-heading">Date:</h3>
-				<p class="list-group-item-text"><?= $data->getDate()->format('Y-m-d H:i:s') ?></p>
-			</li>
-			<li class="list-group-item">
-				<h3 class="list-group-item-heading">Amount:</h3>
-				<p class="list-group-item-text"><?= $data->getAmount() ?></p>
-			</li>
-		</ul>
+		<form action="<?=BASE_URL;?>/CreateAccountHistory">
+			<ul class="list-group">
+				<li class="list-group-item">
+					<h3 class="list-group-item-heading">Account:</h3>
+					<p class="list-group-item-text">
+						<a href="ViewAccount?id=<?= $data->getId() ?>"><?= $data->getName() ?></a>
+					</p>
+				</li>
+				<li class="list-group-item">
+					<div class="input-group">
+						<span class="input-group-addon" id="basic-addon1">@</span>
+						<input type="text" class="form-control" placeholder="Concept" aria-describedby="basic-addon1" name="concept" value="">
+					</div>
+				</li>
+				<li class="list-group-item">
+					<h3 class="list-group-item-heading">Date:</h3>
+					<p class="list-group-item-text"><?= $data->getDate()->format('Y-m-d H:i:s') ?></p>
+				</li>
+				<li class="list-group-item">
+					<h3 class="list-group-item-heading">Amount:</h3>
+					<p class="list-group-item-text"><?= $data->getAmount() ?></p>
+				</li>
+				<li class="list-group-item">
+					<button type="submit" class="btn btn-success">Save</button>
+				</li>
+			</ul>
+			<input type="hidden" name="accountId" value="<?= $data->getId() ?>"/>
+		</form>
 	</div>
 	<div class="panel-footer"><a href="javascript:history.back()">Back</a></div>
 </div>

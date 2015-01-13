@@ -30,7 +30,7 @@
 						</a>
 					</td>
 					<td>
-						<a href="CreateAccountHistoryForm?id=<?= $account->getId() ?>">
+						<a href="CreateAccountHistoryForm?id_account=<?= $account->getId() ?>">
 							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 						</a>
 					</td>

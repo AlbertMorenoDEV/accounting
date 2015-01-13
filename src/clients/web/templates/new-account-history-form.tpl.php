@@ -24,12 +24,15 @@
 					</div>
 				</li>
 				<li class="list-group-item">
-					<h3 class="list-group-item-heading">Date:</h3>
-					<p class="list-group-item-text"><?= $data->getDate()->format('Y-m-d H:i:s') ?></p>
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="Date" aria-describedby="basic-addon1" name="date" value="">
+					</div>
 				</li>
 				<li class="list-group-item">
-					<h3 class="list-group-item-heading">Amount:</h3>
-					<p class="list-group-item-text"><?= $data->getAmount() ?></p>
+					<div class="input-group">
+						<span class="input-group-addon">&euro;</span>
+						<input type="text" class="form-control" aria-label="Amount" name="amount" value="0">
+					</div>
 				</li>
 				<li class="list-group-item">
 					<button type="submit" class="btn btn-success">Save</button>

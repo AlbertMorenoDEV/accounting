@@ -25,7 +25,8 @@
 				</li>
 				<li class="list-group-item">
 					<div class="input-group">
-						<input type="text" class="form-control" placeholder="Date" aria-describedby="basic-addon1" name="date" value="">
+						<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
+						<input type="text" class="form-control" placeholder="Date" aria-describedby="basic-addon1" name="date" value="<?=date("m/d/Y");?>">
 					</div>
 				</li>
 				<li class="list-group-item">
@@ -43,3 +44,8 @@
 	</div>
 	<div class="panel-footer"><a href="javascript:history.back()">Back</a></div>
 </div>
+<script>
+	$(function() {
+		$( "input[name=date]" ).datepicker();
+	});
+</script>

@@ -5,7 +5,9 @@
         "rhumsaa/uuid": "@stable",
         "phpexcel/phpexcel": "@stable",
         "symfony/console": "@stable",
-        "components/bootstrap": "@stable"
+        "components/bootstrap": "@stable",
+        "components/jquery": "@stable",
+        "components/jqueryui": "@stable"
     },
     "require-dev": {
         "phpunit/phpunit": "@stable"

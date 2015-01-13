@@ -14,13 +14,12 @@
 			}
 		</style>
 		
-		<!-- compiled and minified CSS -->
+		<link rel="stylesheet" href="../../vendor/components/jqueryui/themes/smoothness/jquery-ui.css">
 		<link rel="stylesheet" href="../../components/bootstrap/css/bootstrap.min.css">
-
-		<!-- theme -->
 		<link rel="stylesheet" href="../../components/bootstrap/css/bootstrap-theme.min.css">
 
-		<!-- compiled and minified JavaScript -->
+		<script src="../../components/jquery/jquery.min.js"></script>
+		<script src="../../vendor/components/jqueryui/jquery-ui.min.js"></script>
 		<script src="../../components/bootstrap/js/bootstrap.min.js"></script>
 		
 	</head>
@@ -30,7 +29,7 @@
 				<ul class="nav nav-pills">
 					<li role="presentation" class="active"><a href="<?=BASE_URL;?>/">Home</a></li>
 					<li role="presentation"><a href="<?=BASE_URL;?>/ListAccounts">List of Accounts</a></li>
-					<li role="presentation"><a href="<?=BASE_URL;?>/NewAccountForm">New Account</a></li>
+					<li role="presentation"><a href="<?=BASE_URL;?>/CreateAccountForm">New Account</a></li>
 				</ul>
 			</div>
 		</nav>

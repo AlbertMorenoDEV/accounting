@@ -14,13 +14,12 @@
 			}
 		</style>
 		
-		<!-- compiled and minified CSS -->
+		<link rel="stylesheet" href="../../vendor/components/jqueryui/themes/smoothness/jquery-ui.css">
 		<link rel="stylesheet" href="../../components/bootstrap/css/bootstrap.min.css">
-
-		<!-- theme -->
 		<link rel="stylesheet" href="../../components/bootstrap/css/bootstrap-theme.min.css">
 
-		<!-- compiled and minified JavaScript -->
+		<script src="../../components/jquery/jquery.min.js"></script>
+		<script src="../../vendor/components/jqueryui/jquery-ui.min.js"></script>
 		<script src="../../components/bootstrap/js/bootstrap.min.js"></script>
 		
 	</head>

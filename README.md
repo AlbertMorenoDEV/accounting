@@ -46,3 +46,4 @@ Accounting Software
 - [ ] Auto getter
 - [ ] Code refactor
 	- [ ] Comment all classes and methods
+	- [ ] Order methods

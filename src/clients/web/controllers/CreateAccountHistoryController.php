@@ -1,9 +1,11 @@
 <?php
 namespace accounting\clients\web\controllers;
 
+use accounting\aplication\CreateAccountHistory;
+use accounting\aplication\ListAccountHistories;
+use accounting\aplication\ModifyAccountTotal;
 use accounting\infrastructure\ids\AccountHistoryUuid;
 use accounting\infrastructure\ids\AccountUuid;
-use accounting\aplication\CreateAccountHistory;
 use accounting\model\Money;
 
 class CreateAccountHistoryController extends BaseController
@@ -25,7 +27,7 @@ class CreateAccountHistoryController extends BaseController
 		$resultHistories = $usecase->execute();
 		if (count($resultHistories)) {
 			foreach ($resultHistories as $resultHistory) {
-				$total += $resultHistory->amount;
+				$total += $resultHistory->getAmount()->getAmount();
 			}
 		}
 		$usecase = new ModifyAccountTotal($this->getRepository('account'), AccountUuid::fromString($request["accountId"]));

@@ -24,6 +24,7 @@ class CreateAccountHistory
 		$uuid = $idGenerator::generate();
 		$this->repo->add(new AccountHistory($uuid, $account, $amount, $date, $concept));
 		$this->repo->save();
+		
 		return $uuid;
 	}
 }

@@ -34,5 +34,5 @@ class Account
 	 */
 	public function setName($newName) { $this->name = (string) $newName; }
 	public function setModificationDate($newModificationDate) { $this->modificationDate = $newModificationDate; }
-	public function setTotal($newTotal) { $this->total = $newTotal; }
+	public function setTotal(Money $newTotal) { $this->total = $newTotal; }
 }

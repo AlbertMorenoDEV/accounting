@@ -28,7 +28,7 @@ Accounting Software
 	- [x] View account
 	- [x] Edit account via console
 	- [x] Edit account via web
-	- [ ] Calculate total
+	- [ ] Calculate total when new account history is created
 - [ ] Account history
 	- [x] Create account history item via console
 	- [x] Create account history item via web

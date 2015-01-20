@@ -28,7 +28,7 @@ Accounting Software
 	- [x] View account
 	- [x] Edit account via console
 	- [x] Edit account via web
-	- [ ] Calculate total when new account history is created
+	- [x] Recalculate total when new account history is created
 - [ ] Account history
 	- [x] Create account history item via console
 	- [x] Create account history item via web
@@ -44,6 +44,7 @@ Accounting Software
 - [ ] Menu system
 - [ ] Implant Zepto
 - [ ] Auto getter
+- [ ] Error handler
 - [ ] Code refactor
 	- [ ] Comment all classes and methods
 	- [ ] Order methods

@@ -9,22 +9,23 @@ use accounting\model\Money;
 
 class CreateAccountHistory
 {
-	private $repo;
+	private $accountHistoryRepository;
 	private $idGenerator;
+	private $accountRepository;
 
-	public function __construct(AccountHistoryRepository $repo, AccountHistoryId $accountHistoryId)
+	public function __construct(AccountHistoryRepository $accountHistoryRepository, AccountHistoryId $accountHistoryId)
 	{
-		$this->repo = $repo;
+		$this->accountHistoryRepository = $accountHistoryRepository;
 		$this->idGenerator = $accountHistoryId;
+		$this->accountRepository = $accountRepository;
 	}
 
 	public function execute(Account $account, Money $amount, \DateTime $date, $concept)
 	{
 		$idGenerator = $this->idGenerator;
 		$uuid = $idGenerator::generate();
-		$this->repo->add(new AccountHistory($uuid, $account, $amount, $date, $concept));
-		$this->repo->save();
-		
+		$this->accountHistoryRepository->add(new AccountHistory($uuid, $account, $amount, $date, $concept));
+		$this->accountHistoryRepository->save();
 		return $uuid;
 	}
 }

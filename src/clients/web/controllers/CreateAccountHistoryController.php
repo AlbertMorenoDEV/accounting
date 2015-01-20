@@ -17,7 +17,7 @@ class CreateAccountHistoryController extends BaseController
 		$date = new \DateTime($request["date"]);
 		$concept = $request["concept"];
 		
-		$usecase = new CreateAccountHistory($this->getRepository('accountHistory'), $this->getIdsGenerator('accountHistory'));
+		$usecase = new CreateAccountHistory($this->getRepository('accountHistory'), $this->getIdsGenerator('accountHistory'), $this->getRepository('account'));
 		$result = $usecase->execute($account, $amount, $date, $concept);
 		$result = $this->getRepository('accountHistory')->findById(AccountHistoryUuid::fromString($result));
 		
@@ -30,6 +30,8 @@ class CreateAccountHistoryController extends BaseController
 				$total += $resultHistory->getAmount()->getAmount();
 			}
 		}
+		
+		// total account update
 		$usecase = new ModifyAccountTotal($this->getRepository('account'), AccountUuid::fromString($request["accountId"]));
 		$usecase->execute($request["accountId"], $total);
 		
